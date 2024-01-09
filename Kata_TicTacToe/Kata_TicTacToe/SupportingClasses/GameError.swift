@@ -8,4 +8,5 @@
 import Foundation
 enum GameError: Error {
     case wrongMove
+    case moreThanTwoPlayers
 }

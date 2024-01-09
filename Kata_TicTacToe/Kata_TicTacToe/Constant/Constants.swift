@@ -11,4 +11,5 @@ struct Constants {
         static let rowSize = 3
         static let colSizs = 3
     }
+    static let playerCount = 2
 }
