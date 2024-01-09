@@ -95,7 +95,7 @@ class Game {
             return .opponentWon
         }
         
-        if board.legalMoves.count == 0{
+        if !board.legalMoves{
             return .draw
         }
         return .undecided

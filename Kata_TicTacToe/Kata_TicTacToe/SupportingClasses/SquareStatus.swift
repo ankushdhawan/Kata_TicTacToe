@@ -10,4 +10,15 @@ enum SquareStatus {
     case empty
     case x
     case o
+    
+    func getLabelValue() ->String {
+        switch self {
+        case .empty:
+            return ""
+        case .x:
+            return "X"
+        case .o:
+            return "O"
+        }
+    }
 }

@@ -9,8 +9,15 @@ import Foundation
 
 class Board {
     var positions = [[SquareStatus]]()
-    var legalMoves: [Int] {
-        return positions.indices.filter { positions[$0][$0] == .empty }
+    var legalMoves: Bool {
+        for i in 0...Constants.BoardSize.rowSize - 1 {
+            for j in 0...Constants.BoardSize.colSizs - 1 {
+                if positions[i][j] == .empty {
+                    return true
+                }
+            }
+        }
+        return false
     }
     
     init() {

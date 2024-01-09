@@ -35,6 +35,7 @@ final class Kata_TicTacToeTests: XCTestCase {
         test_AddPlayers()
         try? game.addMove(row: 0, col: 0, move: .o)
         try? game.addMove(row: 1, col: 0, move: .x)
+        XCTAssertTrue(game.getResult() == .undecided)
         try? game.addMove(row: 0, col: 1, move: .o)
         try? game.addMove(row: 1, col: 1, move: .x)
         try? game.addMove(row: 0, col: 2, move: .o)
@@ -50,6 +51,20 @@ final class Kata_TicTacToeTests: XCTestCase {
         try? game.addMove(row: 2, col: 0, move: .o)
         try? game.addMove(row: 1, col: 2, move: .x)
         XCTAssertTrue(game.getResult() == .opponentWon)
+    }
+    
+    func test_DrawCase() {
+        test_AddPlayers()
+        try? game.addMove(row: 0, col: 0, move: .o)
+        try? game.addMove(row: 1, col: 0, move: .x)
+        try? game.addMove(row: 0, col: 1, move: .o)
+        try? game.addMove(row: 1, col: 1, move: .x)
+        try? game.addMove(row: 2, col: 0, move: .o)
+        try? game.addMove(row: 2, col: 1, move: .x)
+        try? game.addMove(row: 2, col: 2, move: .o)
+        try? game.addMove(row: 0, col: 2, move: .x)
+        try? game.addMove(row: 1, col: 2, move: .o)
+        XCTAssertTrue(game.getResult() == .draw)
     }
     
     func test_AddPlayers() {

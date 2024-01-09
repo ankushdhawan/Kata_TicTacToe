@@ -12,4 +12,5 @@ struct Constants {
         static let colSizs = 3
     }
     static let playerCount = 2
+    static let gameeCellIndentifier = "GameCell"
 }
