@@ -27,6 +27,29 @@ final class Kata_TicTacToeTests: XCTestCase {
         XCTAssertTrue(game.board.positions[0].first == SquareStatus.empty)
         XCTAssertNoThrow(try game.addMove(row: 0, col: 0, move: .o))
         XCTAssertThrowsError(try game.addMove(row: 0, col: 0, move: .o))
+        XCTAssertThrowsError(try game.addMove(row: 0, col: 0, move: .o))
+        XCTAssertNoThrow(try game.addMove(row: 0, col: 1, move: .x))
+    }
+    
+    func test_player1winnerCase() {
+        test_AddPlayers()
+        try? game.addMove(row: 0, col: 0, move: .o)
+        try? game.addMove(row: 1, col: 0, move: .x)
+        try? game.addMove(row: 0, col: 1, move: .o)
+        try? game.addMove(row: 1, col: 1, move: .x)
+        try? game.addMove(row: 0, col: 2, move: .o)
+        XCTAssertTrue(game.getResult() == .playerWon)
+    }
+    
+    func test_player2winnerCase() {
+        test_AddPlayers()
+        try? game.addMove(row: 0, col: 0, move: .o)
+        try? game.addMove(row: 1, col: 0, move: .x)
+        try? game.addMove(row: 0, col: 1, move: .o)
+        try? game.addMove(row: 1, col: 1, move: .x)
+        try? game.addMove(row: 2, col: 0, move: .o)
+        try? game.addMove(row: 1, col: 2, move: .x)
+        XCTAssertTrue(game.getResult() == .opponentWon)
     }
     
     func test_AddPlayers() {

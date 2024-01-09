@@ -10,4 +10,5 @@ enum GameError: Error {
     case wrongMove
     case moreThanTwoPlayers
     case notEnoughPlayers
+    case sameUserMoveAgain
 }

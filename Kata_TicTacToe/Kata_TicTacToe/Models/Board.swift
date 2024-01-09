@@ -8,7 +8,11 @@
 import Foundation
 
 class Board {
-   var positions = [[SquareStatus]]()
+    var positions = [[SquareStatus]]()
+    var legalMoves: [Int] {
+        return positions.indices.filter { positions[$0][$0] == .empty }
+    }
+    
     init() {
         self.positions = createEmptyBoard()
     }
