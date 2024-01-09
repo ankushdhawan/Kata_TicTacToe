@@ -16,6 +16,7 @@
 		10CDDCF52B4D0ABF00BD1D58 /* Kata_TicTacToeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CDDCF42B4D0ABF00BD1D58 /* Kata_TicTacToeTests.swift */; };
 		10CDDCFF2B4D0ABF00BD1D58 /* Kata_TicTacToeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CDDCFE2B4D0ABF00BD1D58 /* Kata_TicTacToeUITests.swift */; };
 		10CDDD012B4D0ABF00BD1D58 /* Kata_TicTacToeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CDDD002B4D0ABF00BD1D58 /* Kata_TicTacToeUITestsLaunchTests.swift */; };
+		10CDDD0E2B4D0C1600BD1D58 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CDDD0D2B4D0C1600BD1D58 /* Game.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		10CDDCFA2B4D0ABF00BD1D58 /* Kata_TicTacToeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Kata_TicTacToeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		10CDDCFE2B4D0ABF00BD1D58 /* Kata_TicTacToeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kata_TicTacToeUITests.swift; sourceTree = "<group>"; };
 		10CDDD002B4D0ABF00BD1D58 /* Kata_TicTacToeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kata_TicTacToeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		10CDDD0D2B4D0C1600BD1D58 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,12 +101,11 @@
 		10CDDCDC2B4D0ABE00BD1D58 /* Kata_TicTacToe */ = {
 			isa = PBXGroup;
 			children = (
-				10CDDCDD2B4D0ABE00BD1D58 /* AppDelegate.swift */,
-				10CDDCDF2B4D0ABE00BD1D58 /* SceneDelegate.swift */,
-				10CDDCE12B4D0ABE00BD1D58 /* ViewController.swift */,
-				10CDDCE32B4D0ABE00BD1D58 /* Main.storyboard */,
+				10CDDD122B4D0C8A00BD1D58 /* StoryBoards */,
+				10CDDD112B4D0C6A00BD1D58 /* Models */,
+				10CDDD102B4D0C4A00BD1D58 /* Controllers */,
+				10CDDD0F2B4D0C3600BD1D58 /* AppDelegate */,
 				10CDDCE62B4D0ABF00BD1D58 /* Assets.xcassets */,
-				10CDDCE82B4D0ABF00BD1D58 /* LaunchScreen.storyboard */,
 				10CDDCEB2B4D0ABF00BD1D58 /* Info.plist */,
 			);
 			path = Kata_TicTacToe;
@@ -125,6 +126,40 @@
 				10CDDD002B4D0ABF00BD1D58 /* Kata_TicTacToeUITestsLaunchTests.swift */,
 			);
 			path = Kata_TicTacToeUITests;
+			sourceTree = "<group>";
+		};
+		10CDDD0F2B4D0C3600BD1D58 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				10CDDCDF2B4D0ABE00BD1D58 /* SceneDelegate.swift */,
+				10CDDCDD2B4D0ABE00BD1D58 /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		10CDDD102B4D0C4A00BD1D58 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				10CDDCE12B4D0ABE00BD1D58 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		10CDDD112B4D0C6A00BD1D58 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				10CDDD0D2B4D0C1600BD1D58 /* Game.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		10CDDD122B4D0C8A00BD1D58 /* StoryBoards */ = {
+			isa = PBXGroup;
+			children = (
+				10CDDCE32B4D0ABE00BD1D58 /* Main.storyboard */,
+				10CDDCE82B4D0ABF00BD1D58 /* LaunchScreen.storyboard */,
+			);
+			path = StoryBoards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +296,7 @@
 				10CDDCE22B4D0ABE00BD1D58 /* ViewController.swift in Sources */,
 				10CDDCDE2B4D0ABE00BD1D58 /* AppDelegate.swift in Sources */,
 				10CDDCE02B4D0ABE00BD1D58 /* SceneDelegate.swift in Sources */,
+				10CDDD0E2B4D0C1600BD1D58 /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
