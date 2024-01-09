@@ -6,16 +6,10 @@
 //
 
 import Foundation
-class Game {
-   var board = [[String]]()
 
-    func createEmptyBoard() {
-        for _ in 0...Constants.BoardSize.rowSize - 1 {
-            var positions = [String]()
-            for _ in 0...Constants.BoardSize.colSizs - 1 {
-                positions.append("")
-            }
-            board.append(positions)
-        }
+class Game {
+    var board:Board
+    init(board: Board) {
+        self.board = board
     }
 }

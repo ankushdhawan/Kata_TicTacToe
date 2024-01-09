@@ -11,7 +11,8 @@ import XCTest
 final class Kata_TicTacToeTests: XCTestCase {
     var game: Game!
     override func setUp() {
-        game = Game()
+        var board = Board()
+        game = Game(board: board)
         super.setUp()
     }
     
@@ -21,8 +22,8 @@ final class Kata_TicTacToeTests: XCTestCase {
     }
     
     func test_AddEmptyBorad() {
-        game.createEmptyBoard()
-        XCTAssertTrue(game.board.count == 3 && game.board[0].count == 3)
+        XCTAssertTrue(game.board.positions.count == 3 && game.board.positions[0].count == 3)
+        XCTAssertTrue(game.board.positions[0].first == SquareStatus.empty)
     }
 
 
