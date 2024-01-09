@@ -25,15 +25,4 @@ class Board {
         return emptyPositions
     }
     
-    func checkUserMove(row:Int, col:Int) throws {
-        if positions[row][col] != .empty {
-            throw GameError.wrongMove
-        }
-    }
-    
-    func addMove(row:Int, col:Int, move: SquareStatus)throws {
-        try checkUserMove(row: row, col: col)
-        positions[row][col] = move
-    }
-    
 }
