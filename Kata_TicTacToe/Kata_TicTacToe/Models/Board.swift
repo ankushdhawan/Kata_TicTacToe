@@ -24,4 +24,12 @@ class Board {
         }
         return emptyPositions
     }
+    
+    func addMove(row:Int, col:Int, move: SquareStatus)throws {
+        if positions[row][col] != .empty {
+            throw GameError.wrongMove
+        }
+        positions[row][col] = move
+    }
+    
 }
