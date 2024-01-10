@@ -9,7 +9,6 @@ import UIKit
 
 class GameViewController: UIViewController {
     @IBOutlet weak var collectionView:UICollectionView!
-    @IBOutlet weak var searchBar:UISearchBar!
     var turnPlayerName = ""
 
     //Mark:OBJECTS
@@ -27,9 +26,12 @@ class GameViewController: UIViewController {
         do {
             try viewModel?.addPlayer(symbol: .o, name: "player1")
             try viewModel?.addPlayer(symbol: .x, name: "player2")
-        }catch {
-            
+        }catch GameError.moreThanTwoPlayers{
+            showAlert(title: "Error", message: "Morethan two player cannot be added")
+        } catch {
+            showAlert(title: "Error", message: "Something went wrong.")
         }
+        
         turnPlayerName = "player1"
         collectionView.delegate = self
         collectionView.dataSource = viewModel?.dataSource as? UICollectionViewDataSource
@@ -39,21 +41,34 @@ class GameViewController: UIViewController {
     func showResultIfGameOver() {
         switch viewModel?.getGameStatus() {
         case .draw:
-            print("draw")
+            showAlert(title: "", message: "Game is Draw")
             break
         case .playerWon:
-            print("player1 won")
+            let symbol = viewModel?.getWinPlayerSymbol(index: 0)
+            showAlert(title: "", message: "Game is won by \(symbol!)")
             break
         case .opponentWon:
-            print("player2 won")
+            var symbol = viewModel?.getWinPlayerSymbol(index: 1)
+            showAlert(title: "", message: "Game is won by \(symbol!)")
             break
         case .undecided:
-            print("inprogress")
             break
         case .none:
             break
         }
     }
+    
+    func showAlert(title:String, message:String) {
+        var alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func resetGame(sender:UIButton) {
+        viewModel?.resetGame()
+        collectionView.reloadData()
+    }
+
 }
 
 extension GameViewController: UICollectionViewDelegate {
@@ -63,8 +78,14 @@ extension GameViewController: UICollectionViewDelegate {
                 try viewModel?.addMove(row: indexPath.section, col: indexPath.row)
                 collectionView.reloadData()
                 showResultIfGameOver()
+            } catch GameError.wrongMove{
+                showAlert(title: "Error", message: "Wrong Move")
+            } catch GameError.notEnoughPlayers{
+                showAlert(title: "Error", message: "Not Enough Players")
+            } catch GameError.sameUserMoveAgain{
+                showAlert(title: "Error", message: "Same user cannot move again.")
             } catch {
-                
+                showAlert(title: "Error", message: "Something went wrong.")
             }
         }
     }

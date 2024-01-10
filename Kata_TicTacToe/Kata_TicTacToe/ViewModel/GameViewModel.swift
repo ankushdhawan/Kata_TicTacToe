@@ -16,6 +16,8 @@ protocol GameViewModelProtocol {
     func getSymbol(row:Int, col:Int) ->String
     func getGameStatus()-> GameStatus
     func gameIsOver() -> Bool
+    func getWinPlayerSymbol(index:Int) -> String
+    func resetGame()
 }
 
 class GameViewModel:GameViewModelProtocol {
@@ -51,6 +53,17 @@ class GameViewModel:GameViewModelProtocol {
     
     func gameIsOver() -> Bool {
         return game?.isOver() ?? false
+    }
+    
+    func getWinPlayerSymbol(index:Int) -> String {
+        if index < game?.players.count ?? 2 {
+            return game?.players[index].symbol.getLabelValue() ?? ""
+        }
+        return ""
+    }
+    
+    func resetGame() {
+        game?.resetGame()
     }
     
 }

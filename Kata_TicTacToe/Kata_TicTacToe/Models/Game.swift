@@ -37,6 +37,12 @@ class Game {
         }
     }
     
+    func resetGame() {
+        board.positions.removeAll()
+        board.positions = board.createEmptyBoard()
+        lastMove = .empty
+    }
+    
     func hasWon(player: Player) -> Bool {
         // diagonal
         var count = 0

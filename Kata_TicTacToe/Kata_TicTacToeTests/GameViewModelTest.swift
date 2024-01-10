@@ -10,7 +10,7 @@ import XCTest
 @testable import Kata_TicTacToe
 
 final class GameViewModelTest: XCTestCase {
-    var gameViewModel: GameViewModel!
+    var gameViewModel: GameViewModelProtocol!
     override func setUp() {
         gameViewModel = GameViewModel()
         super.setUp()
