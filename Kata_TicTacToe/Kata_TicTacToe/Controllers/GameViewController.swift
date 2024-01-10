@@ -27,9 +27,9 @@ class GameViewController: UIViewController {
             try viewModel?.addPlayer(symbol: .o, name: "player1")
             try viewModel?.addPlayer(symbol: .x, name: "player2")
         }catch GameError.moreThanTwoPlayers{
-            showAlert(title: "Error", message: "Morethan two player cannot be added")
+            showAlert(title: Constants.Alerts.errorTitle, message: Constants.Alerts.moreThanTwoPlayer)
         } catch {
-            showAlert(title: "Error", message: "Something went wrong.")
+            showAlert(title: Constants.Alerts.errorTitle, message: Constants.Alerts.moreThanTwoPlayer)
         }
         
         turnPlayerName = "player1"
@@ -41,7 +41,7 @@ class GameViewController: UIViewController {
     func showResultIfGameOver() {
         switch viewModel?.getGameStatus() {
         case .draw:
-            showAlert(title: "", message: "Game is Draw")
+            showAlert(title: "", message: Constants.Alerts.draw)
             break
         case .playerWon:
             let symbol = viewModel?.getWinPlayerSymbol(index: 0)
@@ -59,7 +59,7 @@ class GameViewController: UIViewController {
     }
     
     func showAlert(title:String, message:String) {
-        var alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
@@ -79,13 +79,13 @@ extension GameViewController: UICollectionViewDelegate {
                 collectionView.reloadData()
                 showResultIfGameOver()
             } catch GameError.wrongMove{
-                showAlert(title: "Error", message: "Wrong Move")
+                showAlert(title: Constants.Alerts.errorTitle, message: Constants.Alerts.wrongMove)
             } catch GameError.notEnoughPlayers{
-                showAlert(title: "Error", message: "Not Enough Players")
+                showAlert(title: Constants.Alerts.errorTitle, message: Constants.Alerts.notEnoughPlayer)
             } catch GameError.sameUserMoveAgain{
-                showAlert(title: "Error", message: "Same user cannot move again.")
+                showAlert(title: Constants.Alerts.errorTitle, message: Constants.Alerts.samePlayer)
             } catch {
-                showAlert(title: "Error", message: "Something went wrong.")
+                showAlert(title: Constants.Alerts.errorTitle, message: Constants.Alerts.errorMessage)
             }
         }
     }
